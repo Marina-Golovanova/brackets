@@ -1,12 +1,11 @@
 module.exports = function check(str, bracketsConfig) {
-  debugger;
   const stack = [];
 
   for (let i = 0; i < str.length; i++) {
     const added = bracketOpen(stack, bracketsConfig, str[i])
 
     if (!added) {
-      if (stack[stack.length - 1]?.closing == str[i]) {
+      if (stack[stack.length - 1] && stack[stack.length - 1].closing == str[i]) {
         stack.pop();
       } else {
         return false;
